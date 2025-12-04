@@ -19,11 +19,12 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],       # Allow all methods
-    allow_headers=["*"],       # Allow all headers
+    allow_origins=["*"],            # testing only — later replace with Netlify URL
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=False,
 )
+
 
 # ------------------------------------------
 # GOOGLE SHEET CSV URL
