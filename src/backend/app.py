@@ -29,6 +29,17 @@ app.add_middleware(
 # )
 
 
+# keep or add CORSMiddleware too (safer), but also add this fallback:
+@app.middleware("http")
+async def add_simple_cors_header(request: Request, call_next):
+    response: Response = await call_next(request)
+    # only set for your Netlify origin
+    response.headers["Access-Control-Allow-Origin"] = "https://exquisite-piroshki-059515.netlify.app"
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS, PUT, DELETE"
+    response.headers["Access-Control-Allow-Headers"] = "*"
+    return response
+
 # ------------------------------------------
 # GOOGLE SHEET CSV URL
 # ------------------------------------------
