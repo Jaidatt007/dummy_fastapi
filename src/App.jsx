@@ -1,31 +1,29 @@
-import React, { useState } from "react";
-import SheetTable from "./SheetTable";
+// src/App.jsx
+import React from "react";
+import SheetLoader from "./SheetLoader";
 
 export default function App() {
-  const [spreadsheetId, setSpreadsheetId] = useState("");
-  const [gid, setGid] = useState("0");
-
   return (
-    <div style={{ padding: 20, fontFamily: "Arial" }}>
-      <h2>Public Google Sheet → JSON Demo</h2>
+    <div style={{ fontFamily: "Inter, Arial, sans-serif", padding: 20, maxWidth: 1200, margin: "0 auto" }}>
+      <header style={{ marginBottom: 20 }}>
+        <h1 style={{ margin: 0, fontSize: 24 }}>Google Sheet → JSON (Render) Demo</h1>
+        <p style={{ marginTop: 6, color: "#555" }}>
+          Enter a <strong>Spreadsheet ID</strong> and the sheet <strong>gid</strong> (tab id) then click <em>Load</em>.
+          The app fetches JSON from <code>https://dummyfastapi.onrender.com</code>.
+        </p>
+      </header>
 
-      <div style={{ marginBottom: 12 }}>
-        <input
-          value={spreadsheetId}
-          onChange={(e) => setSpreadsheetId(e.target.value)}
-          placeholder="Spreadsheet ID"
-          style={{ padding: 8, width: 300, marginRight: 10 }}
-        />
+      <main>
+        <SheetLoader />
+      </main>
 
-        <input
-          value={gid}
-          onChange={(e) => setGid(e.target.value)}
-          placeholder="gid (default: 0)"
-          style={{ padding: 8, width: 120 }}
-        />
-      </div>
-
-      <SheetTable spreadsheetId={spreadsheetId} gid={gid} />
+      <footer style={{ marginTop: 28, fontSize: 13, color: "#666" }}>
+        <div>Notes:</div>
+        <ul style={{ marginTop: 6 }}>
+          <li>The Google Sheet must be public (anyone with the link can view).</li>
+          <li>If you deploy frontend separately, update the BACKEND_BASE in SheetLoader.jsx to your API URL.</li>
+        </ul>
+      </footer>
     </div>
   );
 }
