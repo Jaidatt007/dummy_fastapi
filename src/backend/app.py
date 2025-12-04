@@ -15,7 +15,7 @@ app.add_middleware(
     allow_origins=[NETLIFY_ORIGIN, "http://localhost:5173", "http://localhost:3000"],
     allow_methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"],
     allow_headers=["*"],
-    allow_credentials=False,   # set True only if you need cookies/auth; if True, do NOT use "*"
+    allow_credentials=True,   # set True only if you need cookies/auth; if True, do NOT use "*"
 )
 
 # app.add_middleware(
