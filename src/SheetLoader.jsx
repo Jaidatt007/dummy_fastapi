@@ -97,8 +97,8 @@ export default function SheetLoader() {
         </button>
       </form>
 
-      {/* Error
-      {error && <div style={{ color: "crimson", marginTop: 12 }}>Error: {error}</div>} */}
+      Error
+      {error && <div style={{ color: "crimson", marginTop: 12 }}>Error: {error}</div>}
 
       {/* Loading */}
       {loading && <div style={{ marginTop: 12 }}>Loading data...</div>}
