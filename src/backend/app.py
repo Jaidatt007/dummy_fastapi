@@ -7,16 +7,18 @@ from typing import List, Dict
 
 app = FastAPI(title="Public Sheet JSON API")
 
-# Use your Netlify origin exactly (include https://)
-NETLIFY_ORIGIN = "https://exquisite-piroshki-059515.netlify.app"
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[NETLIFY_ORIGIN, "http://localhost:5173", "http://localhost:3000"],
-    allow_methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"],
+    allow_origins=[
+        "https://exquisite-piroshki-059515.netlify.app",   # your frontend
+        "http://localhost:5173",                           # for local dev
+        "http://localhost:3000"
+    ],
+    allow_credentials=True,       # you already have credentials = true
+    allow_methods=["*"],
     allow_headers=["*"],
-    allow_credentials=True,   # set True only if you need cookies/auth; if True, do NOT use "*"
 )
+
 
 # app.add_middleware(
 #     CORSMiddleware,
