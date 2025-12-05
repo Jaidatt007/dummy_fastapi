@@ -11,8 +11,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://exquisite-piroshki-059515.netlify.app",   # your frontend
-        "http://localhost:5173",                           # for local dev
-        "http://localhost:3000"
+        # "http://localhost:5173",                           # for local dev
+        # "http://localhost:3000"
     ],
     allow_credentials=True,       # you already have credentials = true
     allow_methods=["*"],
